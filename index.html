@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Virtue Salon | Rochester, NY</title>
+  <meta name="description" content="Virtue Salon — balayage, dimensional color, layers & clipper cuts. Book online." />
+
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --card:#12121a;
+      --text:#f5f2ea;
+      --muted:#cfc7bb;
+      --gold:#d8b15a;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 500px at 75% 0%, rgba(216,177,90,.18), transparent 55%),
+        radial-gradient(700px 500px at 15% 10%, rgba(255,255,255,.07), transparent 50%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,11,15,.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      padding:12px 0;
+    }
+    .logo-dot{
+      width:12px; height:12px; border-radius:50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(216,177,90,.12);
+    }
+    .brand b{letter-spacing:.12em; text-transform:uppercase; font-size:13px}
+    .menu{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+    .menu a{
+      text-decoration:none; color:var(--muted); font-size:14px;
+      padding:10px 10px; border-radius:12px;
+    }
+    .menu a:hover{background: rgba(255,255,255,.06); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px; border-radius:14px;
+      border:1px solid rgba(216,177,90,.45);
+      background: linear-gradient(180deg, rgba(216,177,90,.18), rgba(216,177,90,.08));
+      color:var(--text); text-decoration:none; font-weight:600;
+      box-shadow: 0 10px 30px rgba(216,177,90,.10);
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0px)}
+    .hero{
+      padding:56px 0 24px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr; padding-top:34px}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-left{padding:30px}
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      color:var(--muted); font-size:13px; letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .kicker span{
+      width:34px; height:1px; background: rgba(216,177,90,.7);
+      display:inline-block;
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height:1.07;
+      letter-spacing:-.02em;
+    }
+    .lead{color:var(--muted); font-size: clamp(15px, 1.5vw, 18px); margin:0 0 18px}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+    .ghost{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      text-decoration:none; color:var(--text); font-weight:600;
+    }
+    .hero-right{
+      min-height: 360px;
+      position:relative;
+      background:
+        radial-gradient(1200px 500px at 20% 0%, rgba(216,177,90,.12), transparent 45%),
+        rgba(255,255,255,.02);
+    }
+    .hero-photo{
+      position:absolute; inset:0;
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.02) contrast(1.03);
+      opacity:.92;
+    }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,11,15,.1), rgba(11,11,15,.85));
+    }
+    .badge{
+      position:absolute; left:18px; bottom:18px; right:18px;
+      padding:14px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(11,11,15,.55);
+      backdrop-filter: blur(10px);
+      display:flex; gap:12px; justify-content:space-between; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .badge b{color:var(--text)}
+    section{padding:26px 0}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+    }
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+      margin-bottom:10px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing:.02em;
+    }
+    .section-title p{margin:0; color:var(--muted); font-size:14px}
+    .services{padding:18px}
+    .service-row{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:14px;
+      padding:12px 0;
+      border-bottom: 1px dashed rgba(255,255,255,.16);
+      align-items:center;
+    }
+    .service-row:last-child{border-bottom:none}
+    .service-row b{font-size:16px}
+    .service-row span{color:var(--muted)}
+    .price{color:var(--text); font-weight:700}
+    .note{color:var(--muted); font-size:13px; margin-top:12px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(216,177,90,.35);
+      background: rgba(216,177,90,.08);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-size:13px;
+      color:var(--muted);
+      margin-top:14px;
+      width: fit-content;
+    }
+    .pill i{
+      width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block
+    }
+    .gallery{padding:18px}
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 900px){
+      .gallery-grid{grid-template-columns: repeat(2, 1fr)}
+    }
+    .ph{
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(400px 200px at 50% 0%, rgba(216,177,90,.18), transparent 60%),
+        rgba(255,255,255,.03);
+      overflow:hidden;
+      position:relative;
+    }
+    .ph img{width:100%;height:100%;object-fit:cover;display:block}
+    .about{padding:18px}
+    .about p{color:var(--muted); margin:10px 0 0}
+    .contact{padding:18px}
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .contact-grid{grid-template-columns:1fr}
+    }
+    .contact-box{
+      padding:18px;
+      border-radius: 18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .contact-box h3{margin:0 0 8px; font-size:18px}
+    .contact-line{color:var(--muted); margin:6px 0}
+    .footer{
+      padding:22px 0 34px;
+      color:rgba(245,242,234,.72);
+      font-size:13px;
+      border-top: 1px solid var(--line);
+      margin-top: 26px;
+    }
+    .small{font-size:12px; color:rgba(245,242,234,.62)}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <b>Virtue Salon</b>
+      </a>
+
+      <div class="menu" aria-label="Site navigation">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="wrap">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card hero-left">
+        <div class="kicker"><span></span> Rochester, NY</div>
+        <h1>Modern hair, lived-in color, and confident cuts.</h1>
+        <p class="lead">
+          Balayage • Dimensional color • Layers • Clipper cuts — personalized for women and men.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Book an Appointment</a>
+          <a class="ghost" href="#services">View Services</a>
+          <a class="ghost" href="YOUR_INSTAGRAM_LINK_HERE" target="_blank" rel="noopener">Instagram</a>
+        </div>
+
+        <div class="pill"><i></i> New clients welcome • Online booking</div>
+      </div>
+
+      <div class="card hero-right" aria-label="Salon image">
+        <!-- Replace the URL below with your photo link OR leave it blank and it will show a dark gradient -->
+        <div class="hero-photo" style="background-image:url('YOUR_HERO_PHOTO_URL_HERE');"></div>
+        <div class="hero-overlay"></div>
+        <div class="badge">
+          <div><b>Hours:</b> Tue–Sat</div>
+          <div><b>Call/Text:</b> YOUR_PHONE</div>
+          <div><b>Address:</b> YOUR_ADDRESS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES + ABOUT -->
+    <section class="grid" id="services">
+      <div class="card services">
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>Starting prices</p>
+        </div>
+
+        <div class="service-row"><b>Wash / Blow Out</b><div class="price">$35+</div></div>
+        <div class="service-row"><b>Wash Cut Blowdry</b><div class="price">$50+</div></div>
+        <div class="service-row"><b>Kids</b><div class="price">$25+</div></div>
+        <div class="service-row"><b>Clipper Cut</b><div class="price">$30+</div></div>
+        <div class="service-row"><b>Full Color</b><div class="price">$95+</div></div>
+        <div class="service-row"><b>Corrective Color</b><div class="price">$75+/hr</div></div>
+        <div class="service-row"><b>Root Touch Up</b><div class="price">$85+</div></div>
+        <div class="service-row"><b>Lightening Service</b><div class="price">$180+</div></div>
+        <div class="service-row"><b>Formal Style</b><div class="price">$85+</div></div>
+        <div class="service-row"><b>Perms</b><div class="price">$85+</div></div>
+
+        <p class="note">
+          Add-ons: Trim $20 • Curl or Straightening $15 • Facial Hair Trim $10 • Lip $15 • Eyebrow $20 • Chin $12 •
+          <b>Wax All Combo $40</b>
+        </p>
+
+        <p class="small">*Prices may vary based on hair length, thickness, and service time.</p>
+      </div>
+
+      <div class="card about" id="about">
+        <div class="section-title">
+          <h2>About</h2>
+          <p>Meet your stylist</p>
+        </div>
+        <p style="margin-top:6px;">
+          Hi, I’m <b>Karina</b>. I specialize in balayage, dimensional color, layers, and clean clipper cuts.
+          My goal is for every client to leave feeling like their best self — confident, refreshed, and in love with their hair.
+        </p>
+        <p>
+          I keep things easy and personalized: we’ll talk about your hair goals, your lifestyle, and what’s realistic to maintain —
+          then I’ll create a look that fits you.
+        </p>
+
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <span class="pill"><i></i> Balayage & lived-in color</span>
+          <span class="pill"><i></i> Healthy hair first</span>
+          <span class="pill"><i></i> Women + men</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="card gallery">
+        <div class="section-title">
+          <h2>Gallery</h2>
+          <p>Swap these for your photos</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Replace src with your photo URLs (or delete boxes you don't need). -->
+          <div class="ph"><img src="YOUR_PHOTO_1_URL_HERE" alt="Hair color result 1" onerror="this.remove();"></div>
+          <div class="ph"><img src="YOUR_PHOTO_2_URL_HERE" alt="Hair color result 2" onerror="this.remove();"></div>
+          <div class="ph"><img src="YOUR_PHOTO_3_URL_HERE" alt="Hair cut result 3" onerror="this.remove();"></div>
+          <div class="ph"><img src="YOUR_PHOTO_4_URL_HERE" alt="Hair result 4" onerror="this.remove();"></div>
+          <div class="ph"><img src="YOUR_PHOTO_5_URL_HERE" alt="Hair result 5" onerror="this.remove();"></div>
+          <div class="ph"><img src="YOUR_PHOTO_6_URL_HERE" alt="Hair result 6" onerror="this.remove();"></div>
+        </div>
+
+        <p class="note">
+          Tip: Use 6–12 photos max and keep lighting consistent. Your best work only.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="card contact">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Fastest way to reach you</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Book Online</h3>
+            <p class="contact-line">Click below to book your appointment:</p>
+            <p style="margin:12px 0 0;">
+              <a class="btn" href="YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener">Book Now</a>
+            </p>
+
+            <p class="contact-line" style="margin-top:16px;"><b>Call/Text:</b> YOUR_PHONE</p>
+            <p class="contact-line"><b>Email:</b> YOUR_EMAIL</p>
+            <p class="contact-line"><b>Instagram:</b> <a href="YOUR_INSTAGRAM_LINK_HERE" target="_blank" rel="noopener">@yourhandle</a></p>
+          </div>
+
+          <div class="contact-box">
+            <h3>Location</h3>
+            <p class="contact-line"><b>Address:</b> YOUR_ADDRESS</p>
+            <p class="contact-line"><b>Hours:</b> Tue–Sat (customize)</p>
+
+            <!-- Optional: paste a Google Maps embed link here -->
+            <div style="margin-top:12px; border-radius:16px; overflow:hidden; border:1px solid var(--line);">
+              <iframe
+                title="Map"
+                src="YOUR_GOOGLE_MAPS_EMBED_URL_HERE"
+                width="100%" height="240"
+                style="border:0; display:block;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+            <p class="small" style="margin-top:10px;">
+              Don’t have a map link? You can remove this box or add it later.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Virtue Salon. All rights reserved.</div>
+      <div class="small">Designed for mobile • Clean • Modern</div>
+    </div>
+
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
