@@ -21,6 +21,7 @@
 }
 
 *{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:"Montserrat",sans-serif;
@@ -29,8 +30,6 @@ radial-gradient(1200px 600px at 20% 0%, rgba(212,175,55,.12), transparent 55%),
 linear-gradient(#050507,var(--bg));
 color:var(--text);
 }
-
-a{color:inherit}
 
 .wrap{
 max-width:1000px;
@@ -55,10 +54,6 @@ padding:8px 14px;
 border:1px solid var(--line);
 border-radius:999px;
 background:rgba(255,255,255,.03);
-}
-
-.back:hover{
-background:rgba(255,255,255,.07);
 }
 
 .hero{
@@ -103,34 +98,6 @@ background:rgba(0,0,0,.25);
 color:var(--muted);
 }
 
-.btnRow{
-margin-top:16px;
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:10px 14px;
-border-radius:999px;
-border:1px solid var(--line);
-background:rgba(255,255,255,.04);
-text-decoration:none;
-color:var(--text);
-font-size:13px;
-}
-
-.btn:hover{
-background:rgba(255,255,255,.08);
-}
-
-.btnGold{
-background:linear-gradient(180deg,#d4af37,#b8962e);
-color:black;
-font-weight:700;
-border-color:rgba(212,175,55,.55);
-}
-
 .sectionHead{
 margin-top:32px;
 display:flex;
@@ -151,8 +118,6 @@ text-transform:uppercase;
 font-size:16px;
 margin:0;
 }
-
-/* ====== NEW: 4 “photo boxes” (albums) with slideshow + arrows ====== */
 
 .albums{
 margin-top:16px;
@@ -177,9 +142,7 @@ box-shadow:var(--shadow);
 .albumHead{
 padding:12px 14px;
 display:flex;
-align-items:baseline;
 justify-content:space-between;
-gap:10px;
 border-bottom:1px solid rgba(255,255,255,.08);
 }
 
@@ -188,7 +151,6 @@ margin:0;
 font-size:13px;
 letter-spacing:.16em;
 text-transform:uppercase;
-color:rgba(246,242,234,.92);
 }
 
 .albumNote{
@@ -201,7 +163,6 @@ color:var(--muted);
 position:relative;
 aspect-ratio:4/5;
 overflow:hidden;
-background:rgba(255,255,255,.02);
 }
 
 .track{
@@ -220,10 +181,8 @@ height:100%;
 width:100%;
 height:100%;
 object-fit:cover;
-display:block;
 }
 
-/* arrows */
 .cBtn{
 position:absolute;
 top:50%;
@@ -233,62 +192,15 @@ height:44px;
 border-radius:999px;
 border:1px solid rgba(212,175,55,.45);
 background:rgba(0,0,0,.35);
-color:rgba(246,242,234,.95);
+color:white;
 display:flex;
 align-items:center;
 justify-content:center;
 cursor:pointer;
-backdrop-filter: blur(8px);
-transition:transform .2s ease, background .2s ease, border-color .2s ease;
-user-select:none;
-}
-
-.cBtn:hover{
-background:rgba(0,0,0,.55);
-border-color:rgba(212,175,55,.85);
-transform:translateY(-50%) scale(1.05);
 }
 
 .cPrev{left:10px}
 .cNext{right:10px}
-
-.cBtn:focus{
-outline:2px solid rgba(212,175,55,.6);
-outline-offset:2px;
-}
-
-/* subtle hover “premium” effect */
-.album:hover{
-border-color:rgba(212,175,55,.55);
-box-shadow:0 18px 70px rgba(212,175,55,.10), var(--shadow);
-}
-
-/* (mobile) slightly smaller buttons */
-@media(max-width:420px){
-.cBtn{width:40px;height:40px}
-}
-
-/* optional: small dots */
-.dots{
-position:absolute;
-left:0; right:0;
-bottom:10px;
-display:flex;
-justify-content:center;
-gap:8px;
-pointer-events:none;
-}
-
-.dot{
-width:7px;height:7px;border-radius:50%;
-background:rgba(255,255,255,.25);
-border:1px solid rgba(255,255,255,.20);
-}
-
-.dot.active{
-background:rgba(212,175,55,.85);
-border-color:rgba(212,175,55,.65);
-}
 
 </style>
 </head>
@@ -317,19 +229,6 @@ CLIPPER CUTS • COLOR • BLONDING • CUSTOM LAYERS
 <div class="about">
 Karina specializes in clipper cuts, dimensional color, and modern layered cuts.
 She loves helping clients feel confident with customized hair that fits their lifestyle.
-Whether you're looking for a bold transformation or a subtle refresh, Karina focuses on creating results that grow out beautifully.
-</div>
-
-<div class="btnRow">
-
-<a class="btn btnGold" href="https://hairbykarinavirtue.square.site" target="_blank" rel="noreferrer">
-Book Online
-</a>
-
-<a class="btn" href="https://www.instagram.com/hair.by_karina_" target="_blank" rel="noreferrer">
-Instagram
-</a>
-
 </div>
 
 </div>
@@ -339,186 +238,75 @@ Instagram
 <h2 class="h2">Gallery</h2>
 </div>
 
-<!-- NEW: 4 photo boxes -->
 <div class="albums">
 
-  <!-- Album 1 -->
-  <div class="album" data-autoplay="true">
-    <div class="albumHead">
-      <p class="albumTitle">Blonding</p>
-      <p class="albumNote">Swipe or tap arrows</p>
-    </div>
+<!-- Album 1 -->
+<div class="album">
+<div class="albumHead">
+<p class="albumTitle">Blonding</p>
+<p class="albumNote">Swipe or tap arrows</p>
+</div>
 
-    <div class="carousel">
-      <div class="track">
-       <div class="slide"><img src="../assets/karina22c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina23c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina24c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina25c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina26c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina27c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina28c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina299c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina29c.jpeg" alt=""></div>
-<div class="slide"><img src="../assets/karina2c.jpeg" alt=""></div>
-      <button class="cBtn cPrev" type="button" aria-label="Previous photo">‹</button>
-      <button class="cBtn cNext" type="button" aria-label="Next photo">›</button>
+<div class="carousel">
+<div class="track">
 
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </div>
-
-  <!-- Album 2 -->
-  <div class="album" data-autoplay="true">
-    <div class="albumHead">
-      <p class="albumTitle">Dimensional Color</p>
-      <p class="albumNote">Auto-slideshow</p>
-    </div>
-
-    <div class="carousel">
-      <div class="track">
-        <div class="slide"><img src="../assets/karina/Karinabefore1.jpeg" alt="Before 1"></div>
-<div class="slide"><img src="../assets/karina/Karinaafter1.jpeg"  alt="After 1"></div>
-
-<div class="slide"><img src="../assets/karina/Karinabefore2.jpeg" alt="Before 2"></div>
-<div class="slide"><img src="../assets/karina/Karinaafter2.jpeg"  alt="After 2"></div>
-
-<div class="slide"><img src="../assets/karina/Karinabefore3.jpeg" alt="Before 3"></div>
-<div class="slide"><img src="../assets/karina/Karinaafter3.jpeg"  alt="After 3"></div>
-
-<div class="slide"><img src="../assets/karina/Karinabefore4.jpeg" alt="Before 4"></div>
-<div class="slide"><img src="../assets/karina/Karinaafter4.JPG"   alt="After 4"></div>
-
-<div class="slide"><img src="../assets/karina/Karinabefore5.jpeg" alt="Before 5"></div>
-<div class="slide"><img src="../assets/karina/Karinaafter5.jpeg"  alt="After 5"></div>
-
-<div class="slide"><img src="../assets/karina/Karinabefore6.jpeg" alt="Before 6"></div>
-<div class="slide"><img src="../assets/karina/Karinaafter6.jpeg"  alt="After 6"></div>
+<div class="slide"><img src="../assets/karina22c.jpeg"></div>
+<div class="slide"><img src="../assets/karina23c.jpeg"></div>
+<div class="slide"><img src="../assets/karina24c.jpeg"></div>
+<div class="slide"><img src="../assets/karina25c.jpeg"></div>
+<div class="slide"><img src="../assets/karina26c.jpeg"></div>
+<div class="slide"><img src="../assets/karina27c.jpeg"></div>
+<div class="slide"><img src="../assets/karina28c.jpeg"></div>
+<div class="slide"><img src="../assets/karina299c.jpeg"></div>
+<div class="slide"><img src="../assets/karina29c.jpeg"></div>
+<div class="slide"><img src="../assets/karina2c.jpeg"></div>
 
 </div>
 
-      <button class="cBtn cPrev" type="button" aria-label="Previous photo">‹</button>
-      <button class="cBtn cNext" type="button" aria-label="Next photo">›</button>
+<button class="cBtn cPrev">‹</button>
+<button class="cBtn cNext">›</button>
 
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </div>
+</div>
+</div>
 
-  <!-- Album 3 -->
-  <div class="album" data-autoplay="true">
-    <div class="albumHead">
-      <p class="albumTitle">Custom Layers</p>
-      <p class="albumNote">Tap to browse</p>
-    </div>
+<!-- Album 2 -->
+<div class="album">
+<div class="albumHead">
+<p class="albumTitle">Dimensional Color</p>
+</div>
 
-    <div class="carousel">
-      <div class="track">
-        <div class="slide"><img src="../assets/karina5.jpg" alt="Custom layers example 1"></div>
-        <div class="slide"><img src="../assets/karina6.jpg" alt="Custom layers example 2"></div>
-      </div>
+<div class="carousel">
+<div class="track">
 
-      <button class="cBtn cPrev" type="button" aria-label="Previous photo">‹</button>
-      <button class="cBtn cNext" type="button" aria-label="Next photo">›</button>
+<div class="slide"><img src="../assets/Karinabefore1.jpeg"></div>
+<div class="slide"><img src="../assets/Karinaafter1.jpeg"></div>
 
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </div>
+<div class="slide"><img src="../assets/Karinabefore2.jpeg"></div>
+<div class="slide"><img src="../assets/Karinaafter2.jpeg"></div>
 
-  <!-- Album 4 (duplicate set for now — swap images anytime) -->
-  <div class="album" data-autoplay="true">
-    <div class="albumHead">
-      <p class="albumTitle">Transformations</p>
-      <p class="albumNote">Add more pics anytime</p>
-    </div>
+<div class="slide"><img src="../assets/Karinabefore3.jpeg"></div>
+<div class="slide"><img src="../assets/Karinaafter3.jpeg"></div>
 
-    <div class="carousel">
-      <div class="track">
-        <div class="slide"><img src="../assets/karina1.jpg" alt="Transformation example 1"></div>
-        <div class="slide"><img src="../assets/karina4.jpg" alt="Transformation example 2"></div>
-      </div>
+<div class="slide"><img src="../assets/Karinabefore4.jpeg"></div>
+<div class="slide"><img src="../assets/Karinaafter4.JPG"></div>
 
-      <button class="cBtn cPrev" type="button" aria-label="Previous photo">‹</button>
-      <button class="cBtn cNext" type="button" aria-label="Next photo">›</button>
+<div class="slide"><img src="../assets/Karinabefore5.jpeg"></div>
+<div class="slide"><img src="../assets/Karinaafter5.jpeg"></div>
 
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </div>
+<div class="slide"><img src="../assets/Karinabefore6.jpeg"></div>
+<div class="slide"><img src="../assets/Karinaafter6.jpeg"></div>
 
+</div>
+
+<button class="cBtn cPrev">‹</button>
+<button class="cBtn cNext">›</button>
+
+</div>
 </div>
 
 </div>
 
-<script>
-(function(){
-  function makeDots(carousel, count){
-    const dotsWrap = carousel.querySelector(".dots");
-    dotsWrap.innerHTML = "";
-    for(let i=0;i<count;i++){
-      const d = document.createElement("div");
-      d.className = "dot" + (i===0 ? " active" : "");
-      dotsWrap.appendChild(d);
-    }
-  }
-
-  function setActiveDot(carousel, idx){
-    const dots = carousel.querySelectorAll(".dot");
-    dots.forEach((d,i)=>d.classList.toggle("active", i===idx));
-  }
-
-  document.querySelectorAll(".album").forEach(album=>{
-    const carousel = album.querySelector(".carousel");
-    const track = album.querySelector(".track");
-    const slides = Array.from(album.querySelectorAll(".slide"));
-    const prev = album.querySelector(".cPrev");
-    const next = album.querySelector(".cNext");
-
-    let idx = 0;
-    let timer = null;
-
-    makeDots(carousel, slides.length);
-
-    function go(n){
-      idx = (n + slides.length) % slides.length;
-      track.style.transform = "translateX(-" + (idx*100) + "%)";
-      setActiveDot(carousel, idx);
-    }
-
-    function start(){
-      if(album.getAttribute("data-autoplay") !== "true") return;
-      stop();
-      timer = setInterval(()=>go(idx+1), 3500);
-    }
-
-    function stop(){
-      if(timer) clearInterval(timer);
-      timer = null;
-    }
-
-    prev.addEventListener("click", ()=>{ stop(); go(idx-1); start(); });
-    next.addEventListener("click", ()=>{ stop(); go(idx+1); start(); });
-
-    // swipe on mobile
-    let x0 = null;
-    carousel.addEventListener("touchstart", (e)=>{ x0 = e.touches[0].clientX; }, {passive:true});
-    carousel.addEventListener("touchend", (e)=>{
-      if(x0 === null) return;
-      const x1 = e.changedTouches[0].clientX;
-      const dx = x1 - x0;
-      x0 = null;
-      if(Math.abs(dx) < 30) return;
-      stop();
-      if(dx < 0) go(idx+1); else go(idx-1);
-      start();
-    }, {passive:true});
-
-    // pause while hovering (desktop)
-    album.addEventListener("mouseenter", stop);
-    album.addEventListener("mouseleave", start);
-
-    start();
-  });
-})();
-</script>
+</div>
 
 </body>
 </html>
