@@ -50,6 +50,7 @@ backdrop-filter: blur(10px);
 
 .back{
 text-decoration:none;
+color:var(--text);
 padding:8px 14px;
 border:1px solid var(--line);
 border-radius:999px;
@@ -162,7 +163,6 @@ overflow:hidden;
 .track{
 height:100%;
 display:flex;
-transform:translateX(0);
 transition:transform .45s ease;
 }
 
@@ -338,34 +338,24 @@ She loves helping clients feel confident with customized hair that fits their li
 </div>
 
 <script>
+document.querySelectorAll(".album").forEach(album=>{
 
-document.querySelectorAll(".album").forEach(album => {
+const track=album.querySelector(".track");
+const slides=[...album.querySelectorAll(".slide")];
+const prev=album.querySelector(".cPrev");
+const next=album.querySelector(".cNext");
 
-const track = album.querySelector(".track");
-const slides = album.querySelectorAll(".slide");
-const prev = album.querySelector(".cPrev");
-const next = album.querySelector(".cNext");
+let idx=0;
 
-let index = 0;
-
-function update(){
-track.style.transform = "translateX(-" + (index * 100) + "%)";
+function go(n){
+idx=(n+slides.length)%slides.length;
+track.style.transform="translateX(-"+(idx100)+"%)";
 }
 
-function nextSlide(){
-index = (index + 1) % slides.length;
-update();
-}
+prev.addEventListener("click",()=>go(idx-1));
+next.addEventListener("click",()=>go(idx+1));
 
-function prevSlide(){
-index = (index - 1 + slides.length) % slides.length;
-update();
-}
-
-next.addEventListener("click", nextSlide);
-prev.addEventListener("click", prevSlide);
-
-setInterval(nextSlide, 3500);
+setInterval(()=>go(idx+1),3500);
 
 });
 </script>
