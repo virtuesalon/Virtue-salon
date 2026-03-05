@@ -20,7 +20,7 @@
 --shadow:0 18px 60px rgba(0,0,0,.55);
 }
 
-*{box-sizing:border-box}
+{box-sizing:border-box}
 
 body{
 margin:0;
@@ -153,12 +153,6 @@ letter-spacing:.16em;
 text-transform:uppercase;
 }
 
-.albumNote{
-margin:0;
-font-size:12px;
-color:var(--muted);
-}
-
 .carousel{
 position:relative;
 aspect-ratio:4/5;
@@ -244,7 +238,6 @@ She loves helping clients feel confident with customized hair that fits their li
 <div class="album">
 <div class="albumHead">
 <p class="albumTitle">Blonding</p>
-<p class="albumNote">Swipe or tap arrows</p>
 </div>
 
 <div class="carousel">
@@ -304,9 +297,111 @@ She loves helping clients feel confident with customized hair that fits their li
 </div>
 </div>
 
+<!-- Album 3 -->
+<div class="album">
+<div class="albumHead">
+<p class="albumTitle">Custom Layers</p>
+</div>
+
+<div class="carousel">
+<div class="track">
+<div class="slide"><img src="../assets/karina5.jpg"></div>
+<div class="slide"><img src="../assets/karina6.jpg"></div>
+</div>
+
+<button class="cBtn cPrev">‹</button>
+<button class="cBtn cNext">›</button>
+
+</div>
+</div>
+
+<!-- Album 4 -->
+<div class="album">
+<div class="albumHead">
+<p class="albumTitle">Transformations</p>
+</div>
+
+<div class="carousel">
+<div class="track">
+<div class="slide"><img src="../assets/karina1.jpg"></div>
+<div class="slide"><img src="../assets/karina4.jpg"></div>
+</div>
+
+<button class="cBtn cPrev">‹</button>
+<button class="cBtn cNext">›</button>
+
+</div>
 </div>
 
 </div>
+
+</div>
+
+<script>
+
+(function(){
+
+document.querySelectorAll(".album").forEach(album=>{
+
+const track=album.querySelector(".track");
+const slides=[...album.querySelectorAll(".slide")];
+const prev=album.querySelector(".cPrev");
+const next=album.querySelector(".cNext");
+
+let idx=0;
+let timer=null;
+let visible=false;
+
+function go(n){
+idx=(n+slides.length)%slides.length;
+track.style.transform="translateX(-"+(idx100)+"%)";
+}
+
+function start(){
+if(!visible) return;
+stop();
+timer=setInterval(()=>go(idx+1),3500);
+}
+
+function stop(){
+if(timer) clearInterval(timer);
+}
+
+prev.addEventListener("click",()=>{stop();go(idx-1);start();});
+next.addEventListener("click",()=>{stop();go(idx+1);start();});
+
+let x0=null;
+
+album.addEventListener("touchstart",e=>{
+x0=e.touches[0].clientX;
+},{passive:true});
+
+album.addEventListener("touchend",e=>{
+if(x0===null) return;
+const dx=e.changedTouches[0].clientX-x0;
+x0=null;
+if(Math.abs(dx)<30) return;
+stop();
+if(dx<0) go(idx+1);
+else go(idx-1);
+start();
+},{passive:true});
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+visible=entry.isIntersecting;
+if(visible) start();
+else stop();
+});
+},{threshold:0.6});
+
+observer.observe(album);
+
+});
+
+})();
+
+</script>
 
 </body>
 </html>
