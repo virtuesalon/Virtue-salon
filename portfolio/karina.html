@@ -338,7 +338,65 @@ She loves helping clients feel confident with customized hair that fits their li
 </div>
 
 <script>
+<script>
 
+document.querySelectorAll(".album").forEach(function(album){
+
+const track = album.querySelector(".track");
+const slides = album.querySelectorAll(".slide");
+const prev = album.querySelector(".cPrev");
+const next = album.querySelector(".cNext");
+
+let index = 0;
+
+function moveSlide(i){
+index = (i + slides.length) % slides.length;
+track.style.transform = "translateX(-" + (index * 100) + "%)";
+}
+
+if(prev){
+prev.onclick = function(){
+moveSlide(index - 1);
+};
+}
+
+if(next){
+next.onclick = function(){
+moveSlide(index + 1);
+};
+}
+
+setInterval(function(){
+moveSlide(index + 1);
+},3500);
+
+let startX = null;
+
+album.addEventListener("touchstart",function(e){
+startX = e.touches[0].clientX;
+});
+
+album.addEventListener("touchend",function(e){
+
+if(startX === null) return;
+
+let dx = e.changedTouches[0].clientX - startX;
+
+startX = null;
+
+if(Math.abs(dx) < 40) return;
+
+if(dx < 0){
+moveSlide(index + 1);
+}else{
+moveSlide(index - 1);
+}
+
+});
+
+});
+
+</script>
 </script>
 
 </body>
