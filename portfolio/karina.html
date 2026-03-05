@@ -337,64 +337,66 @@ She loves helping clients feel confident with customized hair that fits their li
 
 </div>
 <script>
+document.addEventListener("DOMContentLoaded", () => {
 
-document.querySelectorAll(".album").forEach(function(album){
+  document.querySelectorAll(".album").forEach((album) => {
+    const carousel = album.querySelector(".carousel");
+    const track = album.querySelector(".track");
+    const slides = Array.from(album.querySelectorAll(".slide"));
+    const prev = album.querySelector(".cPrev");
+    const next = album.querySelector(".cNext");
 
-const track = album.querySelector(".track");
-const slides = album.querySelectorAll(".slide");
-const prev = album.querySelector(".cPrev");
-const next = album.querySelector(".cNext");
+    if (!carousel || !track || slides.length < 2) return;
 
-let index = 0;
+    let idx = 0;
+    let timer = null;
 
-function moveSlide(i){
-index = (i + slides.length) % slides.length;
-track.style.transform = "translateX(-" + (index * 100) + "%)";
-}
+    function go(n){
+      idx = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${idx * 100}%)`;
+    }
 
-if(prev){
-prev.onclick = function(){
-moveSlide(index - 1);
-};
-}
+    function start(){
+      stop();
+      timer = setInterval(() => go(idx + 1), 3500);
+    }
 
-if(next){
-next.onclick = function(){
-moveSlide(index + 1);
-};
-}
+    function stop(){
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
 
-setInterval(function(){
-moveSlide(index + 1);
-},3500);
+    // arrows
+    if (prev) prev.addEventListener("click", () => { stop(); go(idx - 1); start(); });
+    if (next) next.addEventListener("click", () => { stop(); go(idx + 1); start(); });
 
-let startX = null;
+    // swipe
+    let x0 = null;
+    carousel.addEventListener("touchstart", (e)=>{ x0 = e.touches[0].clientX; }, {passive:true});
+    carousel.addEventListener("touchend", (e)=>{
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) < 40) return;
+      stop();
+      if (dx < 0) go(idx + 1);
+      else go(idx - 1);
+      start();
+    }, {passive:true});
 
-album.addEventListener("touchstart",function(e){
-startX = e.touches[0].clientX;
+    // autoplay only when visible
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) start();
+        else stop();
+      });
+    }, {threshold:0.4});
+
+    observer.observe(album);
+
+  });
+
 });
-
-album.addEventListener("touchend",function(e){
-
-if(startX === null) return;
-
-let dx = e.changedTouches[0].clientX - startX;
-
-startX = null;
-
-if(Math.abs(dx) < 40) return;
-
-if(dx < 0){
-moveSlide(index + 1);
-}else{
-moveSlide(index - 1);
-}
-
-});
-
-});
-
 </script>
-
 </body>
 </html>
